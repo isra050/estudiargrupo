@@ -12,22 +12,24 @@
       --color-text-primary: #1e293b;
       --color-text-secondary: #475569;
       --color-text-tertiary: #94a3b8;
+      --color-border-secondary: #cbd5e1;
       --color-border-tertiary: #e2e8f0;
       --border-radius-md: 10px;
       --border-radius-lg: 16px;
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --accent: #B23A48; /* Color vino/rojo para salud y trastornos */
+      --accent: #B23A48; /* Color vino/rojo para salud y urgencia */
       --accent-light: #F8E1E4;
       --accent-dark: #7A2530;
       --accent-border: #D77A85;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-    body {
-      font-family: var(--font-sans);
+    
+    body { 
+      font-family: var(--font-sans); 
       background-color: var(--color-background-app);
       color: var(--color-text-primary);
+      padding: 0;
       margin: 0 auto;
       max-width: 900px;
     }
@@ -39,26 +41,42 @@
     .header p { font-size: 14px; color: var(--color-text-secondary); margin-top: 6px; }
 
     .tabs-wrapper {
-      position: sticky; top: 0;
+      position: sticky;
+      top: 0;
       background: var(--color-background-app);
-      padding: 10px 1rem; z-index: 100;
+      padding: 10px 1rem;
+      z-index: 100;
       border-bottom: 1px solid var(--color-border-tertiary);
       margin: 0 -1rem 1.5rem -1rem;
     }
-    .tabs { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; }
+    
+    .tabs { 
+      display: flex; 
+      gap: 10px; 
+      overflow-x: auto; 
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
     .tabs::-webkit-scrollbar { display: none; }
-
+    
     .tab {
-      flex-shrink: 0; padding: 10px 16px;
-      border-radius: 20px; border: 1px solid var(--color-border-tertiary);
+      flex-shrink: 0;
+      padding: 10px 16px; 
+      border-radius: 20px;
+      border: 1px solid var(--color-border-tertiary);
       background: var(--color-background-primary);
-      font-size: 14px; cursor: pointer; color: var(--color-text-secondary);
-      font-weight: 500; transition: all 0.2s ease;
+      font-size: 14px; 
+      cursor: pointer; 
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      transition: all 0.2s ease;
     }
     .tab:active { transform: scale(0.96); }
     .tab.active {
-      background: var(--accent-light); border-color: var(--accent-border);
-      color: var(--accent-dark); font-weight: 600;
+      background: var(--accent-light); 
+      border-color: var(--accent-border); 
+      color: var(--accent-dark); 
+      font-weight: 600;
       box-shadow: 0 2px 4px rgba(178,58,72,0.15);
     }
 
@@ -74,7 +92,8 @@
       background: var(--color-background-primary);
       border: 1px solid var(--color-border-tertiary);
       border-radius: var(--border-radius-lg);
-      padding: 1.25rem; margin-bottom: 1.25rem;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .card-title {
@@ -82,106 +101,320 @@
       margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
     .badge {
-      font-size: 12px; padding: 4px 10px; border-radius: 12px; font-weight: 600; display: inline-block;
+      font-size: 12px; padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      display: inline-block;
     }
-    .badge-red    { background: var(--accent-light); color: var(--accent-dark); }
-    .badge-blue   { background: #EEF3FB; color: #2653A3; }
+    .badge-red { background: var(--accent-light); color: var(--accent-dark); }
+    .badge-blue { background: #EEF3FB; color: #2653A3; }
     .badge-purple { background: #F3EEFB; color: #5A2DA3; }
-
-    .content p  { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem; text-align: justify; }
-    .content ul { padding-left: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.75rem; }
-    .content li { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 8px; }
+    
+    .content p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.75rem; text-align: justify; }
+    .content ul { padding-left: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.75rem;}
+    .content li { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 8px; text-align: justify;}
     .content strong { color: var(--color-text-primary); font-weight: 600; }
 
-    .author-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px; margin-bottom: 1.5rem;
+    .author-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+      gap: 12px; 
+      margin-bottom: 1.5rem; 
     }
     .author-card {
-      background: var(--color-background-primary); border-radius: var(--border-radius-md);
-      padding: 1rem; cursor: pointer; border: 1px solid var(--color-border-tertiary);
-      transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.02); text-align: center;
+      background: var(--color-background-primary);
+      border-radius: var(--border-radius-md);
+      padding: 1rem;
+      cursor: pointer; 
+      border: 1px solid var(--color-border-tertiary);
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      text-align: center;
     }
     .author-card:active { transform: scale(0.98); }
-    .author-card.selected {
-      background: var(--accent-light); border-color: var(--accent-border);
+    .author-card.selected { 
+      background: var(--accent-light); 
+      border-color: var(--accent-border); 
       box-shadow: 0 2px 6px rgba(178,58,72,0.15);
     }
     .author-card .name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
-    .author-card .role { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; }
+    .author-card .role { font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.3;}
 
     .author-content { display: none; animation: fadeIn 0.3s ease; }
     .author-content.active { display: block; }
 
     .topic-block {
       border-left: 4px solid var(--accent);
-      padding: 1rem; background: var(--color-background-primary);
+      padding: 1rem;
+      background: var(--color-background-primary);
       border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
-      margin-bottom: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .topic-block h3 { font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 8px; }
-    .topic-block p  { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+    .topic-block p, .topic-block li { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
 
     .qa-item {
-      border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md);
-      margin-bottom: 12px; overflow: hidden;
-      background: var(--color-background-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid var(--color-border-tertiary);
+      border-radius: var(--border-radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: var(--color-background-primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .qa-question {
-      padding: 1rem; cursor: pointer; font-size: 14px; font-weight: 600;
-      color: var(--color-text-primary); display: flex; justify-content: space-between;
-      align-items: center; user-select: none;
+      padding: 1rem; 
+      cursor: pointer;
+      font-size: 14px; 
+      font-weight: 600; 
+      color: var(--color-text-primary);
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      user-select: none;
     }
     .qa-question:active { background: var(--color-background-secondary); }
     .qa-arrow { font-size: 14px; color: var(--color-text-tertiary); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 8px; }
-    .qa-answer { display: none; padding: 1rem; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; border-top: 1px solid var(--color-border-tertiary); background: #FAFAFA; }
+    .qa-answer {
+      display: none; 
+      padding: 0 1rem 1rem 1rem;
+      font-size: 14px; 
+      color: var(--color-text-secondary); 
+      line-height: 1.6;
+    }
     .qa-answer.open { display: block; animation: fadeIn 0.3s ease; }
-    .qa-arrow.open  { transform: rotate(180deg); color: var(--accent); }
+    .qa-arrow.open { transform: rotate(180deg); color: var(--accent); }
 
-    .data-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 10px; margin: 1rem 0;
+    .data-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+      gap: 10px; 
+      margin: 1rem 0; 
     }
     .data-stat {
-      background: var(--color-background-primary); border-radius: var(--border-radius-md);
-      padding: 1rem 0.5rem; text-align: center;
-      border: 1px solid var(--color-border-tertiary); box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      background: var(--color-background-primary);
+      border-radius: var(--border-radius-md);
+      padding: 1rem 0.5rem;
+      text-align: center;
+      border: 1px solid var(--color-border-tertiary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .data-stat .val { font-size: 24px; font-weight: 700; color: var(--accent-dark); }
     .data-stat .lbl { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.3; }
 
-    .tip-box, .warn-box {
-      border-radius: var(--border-radius-md); padding: 1rem; margin: 1rem 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    .action-text {
+      color: #7A2530;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 8px;
+      display: block;
+      background-color: var(--accent-light);
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent-dark);
     }
-    .tip-box  { background: var(--accent-light); border-left: 4px solid var(--accent); }
-    .tip-box p  { font-size: 14px; color: var(--accent-dark); line-height: 1.6; font-weight: 500; }
-    .warn-box { background: #FAEEDA; border-left: 4px solid #854F0B; }
-    .warn-box p { font-size: 14px; color: #854F0B; line-height: 1.6; font-weight: 500; }
 
     .divider { height: 1px; background: var(--color-border-tertiary); margin: 1.5rem 0; }
-    .section-label { font-size: 14px; font-weight: 600; color: var(--color-text-secondary); margin: 16px 0 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .section-label { font-size: 14px; font-weight: 600; color: var(--color-text-secondary); margin: 16px 0 8px; text-transform: uppercase; letter-spacing: 0.5px;}
+
+    .warn-box {
+      background: #FAEEDA; 
+      border-left: 4px solid #854F0B;
+      border-radius: var(--border-radius-md);
+      padding: 1rem; 
+      margin: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .warn-box p { font-size: 14px; color: #854F0B; line-height: 1.6; font-weight: 500;}
   </style>
 </head>
 <body>
-<div class="container">
 
+<div class="container">
   <div class="header">
-    <h1>Guía de Defensa — Trastornos Alimenticios: Anorexia y Bulimia</h1>
-    <p>U.E.P. Gral. José Laurencio Silva · 5to Año de Ciencias · Maracaibo, Zulia</p>
+    <h1>Guía Coreográfica de Defensa — Anorexia y Bulimia en Adolescentes</h1>
+    <p>U.E.P. Gral. José Laurencio Silva · Formato "Ensayo Continuo y Directo"</p>
   </div>
 
   <div class="tabs-wrapper">
     <div class="tabs">
-      <div class="tab active" onclick="showSection('resumen')">Resumen General</div>
-      <div class="tab" onclick="showSection('autores')">Guiones por Autor (7)</div>
+      <div class="tab active" onclick="showSection('autores')">Guion Exacto por Autor (7)</div>
+      <div class="tab" onclick="showSection('resumen')">Resumen General</div>
       <div class="tab" onclick="showSection('preguntas')">Preguntas del Jurado</div>
       <div class="tab" onclick="showSection('datos')">Datos Clave</div>
-      <div class="tab" onclick="showSection('consejos')">Consejos de Defensa</div>
     </div>
   </div>
 
-  <div id="resumen" class="section active">
+  <div id="autores" class="section active">
+    <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 1rem;">Selecciona tu nombre. Este guion está diseñado para que la defensa fluya de principio a fin de manera ininterrumpida. <strong>Cero redundancias. Solo Jhorfranelis saluda; el resto entra directo al contenido con un conector.</strong></p>
+    
+    <div class="author-grid">
+      <div class="author-card" onclick="showAuthor('jhorfranelis')">
+        <div class="name">1. Jhorfranelis</div>
+        <div class="role">Apertura y Problema</div>
+      </div>
+      <div class="author-card" onclick="showAuthor('francisco')">
+        <div class="name">2. Francisco</div>
+        <div class="role">Justificación e Historia</div>
+      </div>
+      <div class="author-card" onclick="showAuthor('neimar')">
+        <div class="name">3. Neimar</div>
+        <div class="role">Clínica y Síntomas</div>
+      </div>
+      <div class="author-card" onclick="showAuthor('yohelvi')">
+        <div class="name">4. Yohelvi</div>
+        <div class="role">Psicología y Redes</div>
+      </div>
+      <div class="author-card" onclick="showAuthor('maria')">
+        <div class="name">5. María</div>
+        <div class="role">Metodología (Muestra)</div>
+      </div>
+      <div class="author-card" onclick="showAuthor('emanuel')">
+        <div class="name">6. Emanuel</div>
+        <div class="role">Resultados de la Encuesta</div>
+      </div>
+      <div class="author-card" onclick="showAuthor('juandiego')">
+        <div class="name">7. Juan Diego</div>
+        <div class="role">Conclusión y Cierre</div>
+      </div>
+    </div>
+
+    <div id="author-jhorfranelis" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>1. Jhorfranelis Villalobos — Apertura y Planteamiento</h3>
+        <p>Responsabilidad: <strong>Atrapar al jurado</strong>. Eres la única que saluda. Marcas el tono de urgencia y gravedad de la tesis.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Te paras en el centro, postura erguida. Miras a los ojos del jurado principal y esbozas una leve sonrisa de cortesía inicial, para luego ponerte muy seria].</span>
+          <p>"Buenos días, respetado jurado calificador y público presente. Nuestro equipo de investigación está conformado por Francisco, Neimar, Yohelvi, María, Emanuel, Juan Diego y mi persona, Jhorfranelis Villalobos."</p>
+          <span class="action-text">[Acción: Levantas un poco el tono de voz para presentar el título].</span>
+          <p>"Hoy venimos a defender nuestro Trabajo de Grado titulado: <strong>'Trastornos alimenticios en los adolescentes con anorexia y bulimia como factor influyente a la salud en la U.E.P. Gral. José Laurencio Silva'</strong>."</p>
+          <span class="action-text">[Acción: Tono dramático y reflexivo].</span>
+          <p>"Para comprender la magnitud de nuestro planteamiento, debemos dejar de ver la delgadez extrema como una moda. Según la Organización Mundial de la Salud, la anorexia y la bulimia son enfermedades psiquiátricas graves caracterizadas por una alteración letal en la ingesta de alimentos. Un intento desesperado de moldear el cuerpo a costa de destruirlo."</p>
+          <p>"A nivel mundial, más del 20% de los niños y adolescentes sufren desórdenes alimentarios. En Venezuela, la situación es silenciosa pero alarmante: cifras de la Fundación Ayudarte revelan que la prevalencia en jóvenes de 16 a 21 años alcanza el 12,48%. En nuestra institución, la U.E.P. General José Laurencio Silva, hemos observado con preocupación cómo adolescentes de entre 12 y 16 años vulneran su propia salud debido a críticas destructivas y a la presión social por alcanzar estándares inalcanzables."</p>
+          <p>"Esto nos llevó a preguntarnos: <em>¿Cómo están influyendo realmente estos trastornos en la salud física y mental de nuestros estudiantes?</em>"</p>
+          <span class="action-text">[Acción: Giras levemente la cabeza y extiendes la mano hacia Francisco].</span>
+          <p>"Para comprender por qué es urgente responder a esta interrogante, Francisco abordará la justificación de nuestra investigación."</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="author-francisco" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>2. Francisco Cortés — Justificación y Antecedentes (Historia)</h3>
+        <p>Responsabilidad: <strong>Dar contexto histórico</strong>. Entras directo sin saludar. Demuestras que esto no es una "moda nueva".</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Das un paso al frente mientras Jhorfranelis retrocede. Tono firme y seguro].</span>
+          <p>"Justificamos este estudio porque la ignorancia cobra vidas. Los trastornos alimenticios no son un capricho de vanidad; son cogniciones alteradas que provocan daños cardíacos, insuficiencia renal e incluso la muerte. Aportar datos reales sobre nuestros jóvenes de la Curva de Molina no solo nos permite visibilizar el problema, sino crear un precedente metodológico para futuras investigaciones en el Estado Zulia."</p>
+          <span class="action-text">[Acción: Cambias el ritmo de voz, como un historiador].</span>
+          <p>"Históricamente, la distorsión alimentaria ha estado presente en la humanidad, pero bajo otros disfraces. En el Imperio Romano, era común el uso del <em>'vomitorium'</em> tras los grandes banquetes. En la Edad Media, se disfrazaba de santidad, donde mujeres realizaban ayunos extremos por razones religiosas."</p>
+          <p>"Médicamente, el hito ocurrió en 1874, cuando el doctor Williams Gull acuñó oficialmente el término <strong>'Anorexia Nerviosa'</strong> para describir una consunción física provocada por la mente. Y un siglo después, en 1973, los estudios de Hilde Bruch confirmaron que estos trastornos dejaron de ser casos aislados para convertirse en una epidemia social impulsada por los estándares de belleza."</p>
+          <span class="action-text">[Acción: Haces el pase de palabra directo hacia Neimar].</span>
+          <p>"Los fundamentos clínicos y biológicos que definen esta epidemia en la actualidad serán explicados por Neimar."</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="author-neimar" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>3. Neimar Rios — Bases Teóricas y Clínicas (Síntomas)</h3>
+        <p>Responsabilidad: <strong>Ser la voz médica del grupo</strong>. Tu explicación debe ser muy técnica y precisa.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Entras con postura muy profesional. Usas las manos para enumerar los tipos de trastornos].</span>
+          <p>"Fisiológicamente, debemos entender que la pubertad trae consigo cambios inevitables. Como lo explica Chacín (2007), la acción de los estrógenos en las adolescentes promueve el almacenamiento de tejido adiposo en caderas y abdomen. Un proceso biológico natural que hoy, lamentablemente, genera un pánico profundo en la mente del joven."</p>
+          <p>"Este pánico desencadena dos grandes entidades patológicas. Primero, la <strong>Anorexia Nerviosa</strong>, caracterizada por un rechazo sistemático a mantener el peso corporal mínimo normal. El paciente experimenta una distorsión visual de sí mismo y un miedo intenso a engordar. Clínicamente se divide en dos tipos: el <em>Restrictivo</em>, basado en el ayuno crónico; y el <em>Purgativo</em>, donde se utilizan laxantes o vómitos."</p>
+          <p>"El segundo trastorno es la <strong>Bulimia Nerviosa</strong>. A diferencia de la anorexia, aquí el paciente sufre episodios de 'atracones' descontrolados, devorando grandes cantidades de comida en secreto, para luego ser invadido por una culpa asfixiante que lo obliga a realizar conductas compensatorias, como inducirse el vómito o someterse a rutinas de ejercicio extenuantes."</p>
+          <span class="action-text">[Acción: Haces una pausa de un segundo. Miras al jurado con intensidad].</span>
+          <p>"Pero la verdadera raíz de estas enfermedades no está en el estómago, está en el entorno que las rodea, tal como lo demostrará Yohelvi."</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="author-yohelvi" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>4. Yohelvi Gómez — Imagen Corporal y Depresión</h3>
+        <p>Responsabilidad: <strong>La conexión psicológica</strong>. Explicas cómo se daña la mente del adolescente desde afuera hacia adentro.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Tono empático, preocupado. Haces contacto visual con varios miembros del jurado].</span>
+          <p>"El puente entre el entorno y la enfermedad se llama <strong>Imagen Corporal</strong>. Cuando un adolescente desarrolla <em>lipofobia</em> —el miedo irracional a la grasa—, se crea una brecha dolorosa entre el cuerpo que tiene y el ideal inalcanzable que le exigen. Un ideal alimentado agresivamente por los medios y las redes sociales."</p>
+          <p>"Para evidenciar esto, la teoría nos remite a un estudio revelador de Myers y Bicoca en 1992, quienes demostraron que tan solo 30 minutos de exposición a comerciales con el 'cuerpo perfecto' son suficientes para alterar negativamente la autopercepción de una mujer joven."</p>
+          <span class="action-text">[Acción: Bajas un poco el tono de voz para dar peso a la palabra 'depresión'].</span>
+          <p>"Esta tortura psicológica constante deriva en el síntoma más oscuro del trastorno: la <strong>Depresión</strong>. Una pérdida total del interés por vivir que transita desde la fatiga crónica y el aislamiento social, hasta estadios graves caracterizados por sentimientos de inutilidad absoluta, odio hacia sí mismos por haber comido y, en el peor de los casos, pensamientos suicidas."</p>
+          <span class="action-text">[Acción: Recuperas firmeza y presentas a María].</span>
+          <p>"Para cuantificar cómo este fenómeno silente afecta a nuestra propia institución, María detallará los parámetros metodológicos aplicados."</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="author-maria" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>5. María Iinciarte — Marco Metodológico</h3>
+        <p>Responsabilidad: <strong>Ser el escudo estadístico de la tesis</strong>. Tu tono debe ser muy formal, sin muletillas.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Das un paso al frente con actitud técnica y segura].</span>
+          <p>"Para abordar esta realidad bajo el rigor científico, estructuramos una investigación de <strong>tipo descriptiva</strong> y un <strong>diseño de campo</strong>. Como sustenta Fidias Arias (2006), nuestro objetivo fue recolectar los datos primarios directamente de la realidad, es decir, de los estudiantes de la U.E.P. Gral. José Laurencio Silva, sin manipular las variables en un entorno artificial."</p>
+          <p>"Nuestra población general estuvo conformada por 184 alumnos del plantel. A partir de allí, aplicamos criterios de selección para extraer una <strong>muestra intencional de 66 adolescentes</strong> (conformada por 37 hembras y 29 varones) de entre 12 y 17 años, quienes presentaban indicadores de vulnerabilidad o interés en la problemática."</p>
+          <p>"Como técnica de recolección de datos, aplicamos la entrevista. Desarrollamos un instrumento de 8 preguntas diagnósticas directas para medir su percepción corporal, sus hábitos restrictivos y su conocimiento clínico de las enfermedades."</p>
+          <span class="action-text">[Acción: Pase de palabra directo y expectante a Emanuel].</span>
+          <p>"La tabulación de estas entrevistas arrojó datos sumamente contradictorios que Emanuel procederá a analizar."</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="author-emanuel" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>6. Emanuel Mendoza — Análisis de Resultados</h3>
+        <p>Responsabilidad: <strong>Mostrar la ignorancia del problema</strong>. Debes hacer notar la paradoja entre lo que dicen y lo que sienten los alumnos.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Tono analítico. Si hay láminas de gráficos en pantalla, señálalas con la mano abierta].</span>
+          <p>"Los resultados de nuestro trabajo de campo dejaron en evidencia un problema de desinformación masiva. Al preguntar a los 66 adolescentes si conocían el significado clínico de los términos <em>Anorexia</em> y <em>Bulimia</em>, la respuesta mayoritaria fue negativa. Los estudiantes conviven con el síntoma, pero no saben nombrar la enfermedad."</p>
+          <p>"Encontramos una fuerte disonancia cognitiva. Por un lado, un porcentaje significativo afirmó sentirse 'satisfecho' con su peso actual y negó verse influenciado por las redes sociales. Pero, al profundizar en la entrevista y preguntarles si sentían <strong>culpa o remordimiento después de comer en exceso</strong>, la tendencia cambió drásticamente hacia una afirmación abrumadora, especialmente en la población femenina."</p>
+          <p>"Es decir: el adolescente niega la influencia externa por orgullo, pero en la privacidad de su mente, se somete a un castigo psicológico constante por el acto natural de alimentarse. Además, al preguntar a quién acudirían en caso de sufrir estos trastornos, las respuestas estuvieron divididas casi al 50%, lo que evidencia la ausencia de una ruta de orientación clara."</p>
+          <span class="action-text">[Acción: Miras a Juan Diego para entregar el cierre de la defensa].</span>
+          <p>"Con este diagnóstico sobre la mesa, Juan Diego presentará nuestro veredicto final y las líneas de acción ejecutadas."</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="author-juandiego" class="author-content">
+      <div class="topic-block" style="border-color: #B23A48;">
+        <h3>7. Juan Diego Villalobos — Conclusiones y Cierre</h3>
+        <p>Responsabilidad: <strong>El Remate final</strong>. Tú entregas la conclusión y demuestras qué hizo el grupo para ayudar a la escuela.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Guion Exacto de Defensa</div>
+        <div class="content">
+          <span class="action-text">[Acción: Das un paso al frente, con total presencia. Tono resolutivo y contacto visual con todo el jurado].</span>
+          <p>"Concluyendo nuestra investigación, confirmamos que la anorexia y la bulimia representan una amenaza inminente y letal para los adolescentes de nuestra institución. Su ignorancia sobre las consecuencias los hace aún más vulnerables al daño en los vasos sanguíneos, fallas renales crónicas y daños irreversibles en el músculo cardíaco."</p>
+          <p>"Sin embargo, no nos limitamos a documentar el problema: decidimos intervenir. Como aporte directo de este trabajo de grado, nuestro equipo estructuró e impartió charlas informativas y preventivas a los estudiantes de la U.E.P. Gral. José Laurencio Silva, dotándolos, de manera orientativa, de planes alimenticios saludables para romper el mito de que el ayuno es la solución."</p>
+          <span class="action-text">[Acción: Haces una pausa dramática. Tono profundo y compasivo].</span>
+          <p>"Nuestra recomendación final es una exigencia social. A las autoridades educativas: urge incluir la nutrición y salud mental en las aulas. Y a los padres y familiares: <strong>erradiquen por completo los comentarios negativos sobre el cuerpo de sus hijos</strong>. Una crítica inocente en la mesa, puede desencadenar una tragedia psiquiátrica en el futuro."</p>
+          <span class="action-text">[Acción: Te integras con la línea de tus compañeros, haces un gesto leve con la cabeza en señal de respeto].</span>
+          <p>"Sanar la mente es el primer paso para nutrir el cuerpo. En nombre del equipo investigador, agradecemos profundamente su atención, y declaramos abierto el ciclo de preguntas."</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="resumen" class="section">
     <div class="card">
       <div class="card-title"><span class="badge badge-red">Tema Central</span></div>
       <div class="content">
@@ -200,207 +433,46 @@
         </ul>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-title">Hallazgo Principal</div>
-      <div class="content">
-        <p>A pesar de que un gran número de adolescentes sufre síntomas o conoce a alguien con trastornos, <strong>la mayoría desconoce el significado clínico de "Anorexia" y "Bulimia"</strong>. Existe un alto nivel de culpa al comer, especialmente en las mujeres, originado por presiones psicosociales e ideales de belleza irreales.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="autores" class="section">
-    <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1rem;">Selecciona tu nombre para ver tu tema asignado y tu guion literal detallado.</p>
-
-    <div class="author-grid">
-      <div class="author-card" onclick="showAuthor('jhorfranelis')"><div class="name">Jhorfranelis</div><div class="role">Cap I: Planteamiento</div></div>
-      <div class="author-card" onclick="showAuthor('francisco')"><div class="name">Francisco</div><div class="role">Cap I / II: Just. y Antecedentes</div></div>
-      <div class="author-card" onclick="showAuthor('neimar')"><div class="name">Neimar</div><div class="role">Cap II: Teoría y Síntomas</div></div>
-      <div class="author-card" onclick="showAuthor('yohelvi')"><div class="name">Yohelvi</div><div class="role">Cap II: Imagen y Depresión</div></div>
-      <div class="author-card" onclick="showAuthor('maria')"><div class="name">María</div><div class="role">Cap III: Metodología</div></div>
-      <div class="author-card" onclick="showAuthor('emanuel')"><div class="name">Emanuel</div><div class="role">Cap IV: Análisis de Datos</div></div>
-      <div class="author-card" onclick="showAuthor('juandiego')"><div class="name">Juan Diego</div><div class="role">Cap IV: Conclusiones</div></div>
-    </div>
-
-    <div id="author-jhorfranelis" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>1. Jhorfranelis — Capítulo I: Planteamiento y Objetivos</h3>
-        <p>Eres la encargada de <strong>abrir la defensa</strong>. Debes saludar al jurado, presentar el título y explicar el problema desde lo global a lo local.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Da un paso al frente, mirada panorámica al jurado, postura recta y voz clara]</strong></p>
-          <p>"Buenos días, estimado jurado calificador y público presente. Nuestro equipo de investigación está conformado por Francisco, Neimar, Yohelvi, María, Emanuel, Juan Diego y mi persona, Jhorfranelis Villalobos. Hoy venimos a presentar nuestra tesis titulada: <em>'Trastornos alimenticios en los adolescentes con anorexia y bulimia como factor influyente a la salud en la U.E.P. Gral. José Laurencio Silva'</em>."</p>
-          <p><strong>[Cambia a un tono serio y de preocupación]</strong></p>
-          <p>"Para iniciar con el Capítulo I, el Planteamiento del Problema, debemos definir qué son estos trastornos. Según la Organización Mundial de la Salud, son enfermedades mentales caracterizadas por una pérdida excesiva y deliberada de peso, arriesgando la propia salud mediante ayunos o técnicas poco saludables con un único objetivo: no engordar.</p>
-          <p>A nivel global, la situación es alarmante. Más del 20% de los niños y adolescentes sufren desórdenes alimentarios. En Latinoamérica, países como Argentina muestran que 1 de cada 5 jóvenes padece estos problemas. Y Venezuela no escapa de esta realidad: según la Fundación Ayudarte, la prevalencia de estos trastornos en la población venezolana de 16 a 21 años es del 12,48%, cifra que se disparó dramáticamente tras la cuarentena.</p>
-          <p>En el Estado Zulia, los factores socioculturales ejercen una gran presión, afectando fundamentalmente a las mujeres entre los 10 y 30 años. Al observar nuestra propia institución, la U.E.P. Gral. José Laurencio Silva, notamos que adolescentes entre 12 y 16 años están siendo fuertemente vulnerados por esta enfermedad mental, arriesgando su salud por comentarios destructivos hacia su cuerpo. Esto nos llevó a formular la siguiente interrogante: <em>¿Estará el sistema de salud y nuestra comunidad brindando la atención integral al adolescente que presenta estos trastornos?</em></p>
-          <p>Para responderla, nos trazamos un Objetivo General: Determinar cómo la anorexia y bulimia influyen en la salud de nuestros adolescentes. Y para lograrlo, nuestros objetivos específicos son: identificar a los afectados, conocer sus causas y consecuencias, analizar la problemática, y finalmente, proponer un plan alimenticio y charlas orientadoras para nuestra institución.</p>
-          <p>A continuación, mi compañero Francisco les explicará la justificación de este estudio."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="author-francisco" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>2. Francisco — Capítulo I y II: Justificación, Delimitación y Antecedentes</h3>
-        <p>Debes convencer al jurado de <strong>por qué</strong> este estudio es importante y contar la historia de la enfermedad.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Asiente a Jhorfranelis. Habla con seguridad y usa las manos para enfatizar]</strong></p>
-          <p>"Buenos días. Justificamos esta investigación porque los trastornos alimenticios no son un juego de vanidad, son un estado mental con cogniciones alteradas que ocasionan daños físicos, psicológicos y sociales. A nivel teórico, este trabajo profundiza en enfermedades que afectan la capacidad del cuerpo para nutrirse, provocando daños cardíacos, renales e incluso la muerte. A nivel práctico, nos permite abordar a jóvenes de 13 a 18 años afectados por críticas destructivas. Y a nivel metodológico, servirá como antecedente para futuras investigaciones en nuestra región."</p>
-          <p>"Nuestra investigación se delimitó geográficamente en Maracaibo, Estado Zulia, parroquia Antonio Borjas Romero, en la comunidad de la Curva de Molina, abarcando a estudiantes de 12 a 17 años durante el mes de abril de 2026."</p>
-          <p><strong>[Pausa breve. Tono narrativo para la historia]</strong></p>
-          <p>"Entrando al Capítulo II, el Marco Teórico, debemos saber que esto no es un problema nuevo. Los trastornos de alimentación se remontan a la antigüedad. Los romanos visitaban el <em>'vomitorium'</em> tras grandes banquetes para poder seguir comiendo. En la Edad Media, algunas mujeres eran consideradas 'santas' por realizar ayunos intensos y mortales.</p>
-          <p>Científicamente, el primer registro ocurre en 1689 cuando el Dr. Morton describe una 'consunción nerviosa' en una paciente que se negaba a comer sin tener una enfermedad física. Un siglo después, en 1874, el Dr. Williams Gull acuña oficialmente el término <em>'Anorexia Nerviosa'</em>. Luego, en 1973, Hilde Bruch publica sus famosos estudios de caso, evidenciando que el trastorno ya no era solo de la clase alta, sino un problema social generalizado por los cambios en los estándares de belleza.</p>
-          <p>Para profundizar en los fundamentos teóricos de estas enfermedades, los dejo con mi compañera Neimar."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="author-neimar" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>3. Neimar — Capítulo II: Bases Teóricas (Anorexia, Bulimia y Síntomas)</h3>
-        <p>Tu rol es <strong>científico</strong>. Debes explicar clínicamente qué son la anorexia y la bulimia según los autores.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Postura erguida, mirada directa. Habla de forma pausada y explicativa]</strong></p>
-          <p>"Buenos días al jurado. Para construir nuestras bases teóricas, nos apoyamos en investigadores como Hudson y Neumark-Sztainer, quienes afirman que estos trastornos generan desnutrición y complicaciones metabólicas graves a corto y largo plazo. Asimismo, el autor Lock en 2010 subraya que la detección temprana es la única forma de prevenir complicaciones fatales."</p>
-          <p>"Fisiológicamente, debemos entender el papel de la masa corporal. Como explica Chacín (2007), el estrógeno en las mujeres convierte la comida en grasa depositándola en caderas y abdomen, un proceso biológico natural de la pubertad que, lamentablemente, genera angustia en los adolescentes que buscan un peso ideal irreal."</p>
-          <p><strong>[Haz un gesto para separar los dos conceptos principales]</strong></p>
-          <p>"Clínicamente, abordamos dos grandes trastornos. Primero, la <strong>Anorexia Nerviosa</strong>, que proviene del griego 'exia' (inapetencia) y 'ano' (pérdida). Es una inapetencia voluntaria con un miedo irracional a engordar. Se divide en dos subtipos: el <em>Restrictivo</em>, donde la persona ayuna y hace ejercicio extremo; y el <em>Purgativo</em>, donde usan laxantes o vómitos obsesivamente. Sus síntomas son claros: contar calorías obsesivamente, prohibirse alimentos y sentir culpa al comer."</p>
-          <p>"Segundo, la <strong>Bulimia Nerviosa</strong>, que significa 'hambre de buey'. Consiste en fuertes atracones de comida seguidos de conductas compensatorias inapropiadas por vergüenza. También tiene dos subtipos: el <em>Purgativo</em> (vómitos y laxantes) y el <em>No Purgativo</em> (dietas excesivas y ejercicio compulsivo tras el atracón). Quien padece bulimia suele comer a escondidas, tragar compulsivamente y evitar eventos sociales que involucren comida.</p>
-          <p>Pero, ¿qué lleva a un joven a odiar su cuerpo de esta manera? Mi compañera Yohelvi se los explicará."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="author-yohelvi" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>4. Yohelvi — Capítulo II: Imagen Corporal, Medios y Depresión</h3>
-        <p>Tu parte conecta la <strong>psicología con la sociedad</strong>. Explicas cómo se daña la mente del adolescente.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Tono empático y reflexivo. Mira a los profesores para conectar con la realidad de los jóvenes]</strong></p>
-          <p>"Buenos días. El núcleo psicológico de estos trastornos es la <strong>Imagen Corporal</strong>. Históricamente, desde 1922, el Dr. Pick definió que cada persona desarrolla una 'imagen espacial' de sí misma en su cerebro. Cuando hay una insatisfacción corporal, según Bello (2000), existe una discrepancia total entre cómo es el cuerpo real de la persona y el ideal inalcanzable que desea. Es una obsesión que genera constante autocrítica, pesarse múltiples veces al día y un miedo profundo a engordar llamado lipofobia."</p>
-          <p>"¿Y quién alimenta este ideal inalcanzable? Los medios de comunicación y las redes sociales. Un revelador estudio de 1992 realizado por Myers y Bicoca demostró que tan solo 30 minutos de estar expuestas a comerciales sobre el 'cuerpo ideal' es suficiente para afectar negativamente la percepción corporal de mujeres jóvenes."</p>
-          <p><strong>[Tono más grave y preocupado]</strong></p>
-          <p>"Toda esta presión desencadena un problema colateral letal: la <strong>Depresión</strong>. El psicólogo Porland la define como la pérdida de la capacidad de disfrutar la vida. En los trastornos alimenticios vemos la depresión en tres niveles: la <em>Leve</em>, donde hay fatiga pero el joven sigue estudiando; la <em>Moderada</em>, donde abandona su vida social; y la <em>Grave</em>, caracterizada por sentimientos de inutilidad, culpa extrema por haber comido y, lamentablemente, un alto riesgo de suicidio.</p>
-          <p>Para entender cómo medimos esta dura realidad en nuestro liceo, los dejo con mi compañera María, quien detallará la metodología empleada."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="author-maria" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>5. María — Capítulo III: Marco Metodológico</h3>
-        <p>Tu rol es <strong>técnico y estadístico</strong>. Demuestras que la investigación tiene validez científica.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Tono estructurado y profesional, propio de un investigador]</strong></p>
-          <p>"Buenos días. Para el Capítulo III, correspondiente al Marco Metodológico, nos apoyamos en autores como Fidias Arias (2006). Estructuramos una investigación de <strong>tipo descriptiva</strong>, ya que nuestro propósito es presentar, analizar y evaluar la información tal cual se manifiesta en la realidad de nuestra institución. Asimismo, utilizamos un <strong>diseño de campo</strong>, recolectando los datos directamente de los sujetos investigados en la U.E.P. Gral. José Laurencio Silva, sin alterar ni manipular ninguna variable."</p>
-          <p>"Para delimitar a nuestros sujetos de estudio, definimos una <strong>Población</strong> total de 184 alumnos del liceo, distribuidos en 98 hembras y 86 varones. De allí, extrajimos una <strong>Muestra</strong> representativa, la cual, según Balestrini (2008), es un subconjunto de la población. Nuestra muestra quedó conformada por 66 adolescentes (37 hembras y 29 varones) que presentaban señales de vulnerabilidad ante estos trastornos."</p>
-          <p>"Finalmente, en cuanto a las Técnicas e Instrumentos de Recolección de Datos, empleamos la <strong>Entrevista</strong>. Basados en Richards (1992), diseñamos una conversación dirigida con un cuestionario de 8 preguntas clave, aplicadas directamente a nuestros adolescentes para conocer su percepción sobre su cuerpo, la culpa al comer y su conocimiento sobre estas enfermedades.</p>
-          <p>¿Qué nos revelaron estos datos? Mi compañero Emanuel presentará los análisis de los resultados."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="author-emanuel" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>6. Emanuel — Capítulo IV: Análisis de Resultados</h3>
-        <p>Debes presentar la <strong>realidad revelada por las encuestas</strong>, destacando las contradicciones que encontraron.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Apóyate visualmente si tienen láminas o gráficos. Tono analítico]</strong></p>
-          <p>"Buenos días al jurado. El análisis de las entrevistas nos arrojó resultados que evidencian una peligrosa desinformación. Al preguntarles si sabían qué era la <strong>anorexia nerviosa</strong> y la <strong>bulimia nerviosa</strong>, la gran mayoría de los encuestados admitió desconocer por completo los términos clínicos. No saben diferenciar una enfermedad de la otra."</p>
-          <p>"Ocurrió algo paradójico: un alto porcentaje afirmó estar 'satisfecho con su peso actual', pero al avanzar en la entrevista, al preguntarles si se sentían culpables tras comer en exceso, encontramos una tendencia altísima a la culpa, especialmente en las mujeres. Hay una disonancia: dicen estar conformes, pero sufren de arrepentimiento y castigo psicológico al comer."</p>
-          <p>"Consultamos sobre la influencia externa. Sorprendentemente, la mayoría respondió que <em>no</em> consideran que su aspecto físico sea cuestionado por las redes sociales, y que no buscan métodos peligrosos en internet. Sin embargo, al preguntarles si conocían a alguien cercano que padeciera un trastorno alimenticio, la mayoría dijo que SÍ. Es decir, el problema existe, conviven con él, pero los jóvenes no identifican de dónde proviene la presión."</p>
-          <p>"Finalmente, al preguntar a quién acudir en caso de padecer la enfermedad, las respuestas estuvieron divididas casi por la mitad (32 frente a 34), demostrando que falta educación en salud mental dentro de la comunidad.</p>
-          <p>A partir de esta cruda realidad, mi compañero Juan Diego les presentará las conclusiones y recomendaciones de nuestro equipo."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="author-juandiego" class="author-content">
-      <div class="topic-block" style="border-color:#B23A48;">
-        <h3>7. Juan Diego — Capítulo IV: Conclusiones y Recomendaciones</h3>
-        <p>Eres el encargado de <strong>cerrar la defensa</strong> con fuerza, mostrando qué hicieron ustedes para ayudar.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Guion literal de defensa <span class="badge badge-red">Paso a paso</span></div>
-        <div class="content">
-          <p><strong>[Acción: Da un paso al frente, tono resolutivo, voz proyectada y contacto visual directo con el jurado]</strong></p>
-          <p>"Buenos días. Para concluir nuestra investigación, determinamos que la anorexia y la bulimia tienen consecuencias devastadoras, directas e indirectas, en los adolescentes de la U.E.P. Gral. José Laurencio Silva. Más allá del daño emocional, demostramos que estas conductas restrictivas o purgativas conducen a enfermedades cardíacas por daño en los vasos sanguíneos, fallas renales e incluso la muerte por desnutrición extrema."</p>
-          <p>"Gracias al diagnóstico realizado mediante las entrevistas, logramos nuestro objetivo de identificar la desinformación existente. No nos quedamos solo en el papel: pasamos a la acción. Como intervención directa, elaboramos e impartimos charlas informativas dentro de nuestra institución y les facilitamos a los jóvenes afectados planes alimenticios saludables y balanceados."</p>
-          <p><strong>[Tono proactivo y esperanzador]</strong></p>
-          <p>"Para finalizar, dejamos recomendaciones fundamentales para padres, profesores y adolescentes. Primero: buscar <strong>ayuda profesional</strong> de inmediato (psicólogos y médicos). Segundo: construir un <strong>equipo de apoyo</strong> que brinde comprensión, no juzgamiento. Tercero: fomentar la <strong>educación sobre nutrición</strong> en el aula. Y lo más importante para las familias: <strong>Evitar comentarios negativos sobre la apariencia física</strong>. Destruir la autoestima de un joven por su peso puede empujarlo al abismo de estos trastornos."</p>
-          <p>"Sanar la mente es el primer paso para nutrir el cuerpo. En nombre de mis compañeros y el mío propio, agradecemos su valiosa atención. Quedamos a su entera disposición para el ciclo de preguntas."</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div id="preguntas" class="section">
-    <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1rem;">Toca cada pregunta para ver la respuesta sugerida basada estrictamente en la tesis.</p>
+    <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1rem;">Toca cada pregunta para ver la respuesta sugerida basada estrictamente en la tesis. Pónganse de acuerdo visualmente sobre quién responde.</p>
 
-    <div class="section-label">Preguntas sobre Teoría</div>
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">¿Cuál es la diferencia exacta entre Anorexia y Bulimia según su investigación? (Ideal para Neimar) <span class="qa-arrow">▼</span></div>
+      <div class="qa-answer">La Anorexia es la restricción extrema de alimentos por un miedo fóbico a engordar, acompañada de una distorsión visual (se ven con sobrepeso estando desnutridos). La Bulimia, en cambio, está marcada por la falta de control: el paciente sufre "atracones" (devora comida en secreto) e inmediatamente se ve invadido por la culpa, lo que lo lleva a purgarse induciendo el vómito o abusando de laxantes.</div>
+    </div>
     
     <div class="qa-item">
-      <div class="qa-question" onclick="toggleQA(this)">¿Cuál es la diferencia exacta entre Anorexia y Bulimia según su investigación? <span class="qa-arrow">▼</span></div>
-      <div class="qa-answer">La Anorexia es la restricción extrema de alimentos por miedo a engordar y una distorsión de la imagen corporal (verse gordo estando muy delgado). La Bulimia, en cambio, se caracteriza por episodios de "atracones" (comer en exceso con pérdida de control) seguidos inmediatamente por conductas compensatorias como vómitos autoprovocados, uso de laxantes o ejercicio compulsivo para evitar ganar peso.</div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-question" onclick="toggleQA(this)">¿Mencionan que puede haber enfermedades cardíacas, ¿por qué suceden? <span class="qa-arrow">▼</span></div>
-      <div class="qa-answer">Los trastornos alimenticios causan desnutrición severa y alteraciones en el metabolismo. En la tesis se menciona que los problemas cardíacos abarcan los vasos sanguíneos y pueden estar vinculados a la aterosclerosis (acumulación de placa en las arterias) o al debilitamiento general del músculo cardíaco por falta de nutrientes esenciales, lo que puede derivar en un ataque cardíaco.</div>
+      <div class="qa-question" onclick="toggleQA(this)">Mencionan daños cardíacos, ¿por qué suceden? (Ideal para Juan Diego o Francisco) <span class="qa-arrow">▼</span></div>
+      <div class="qa-answer">Al someter al cuerpo a desnutrición crónica (anorexia) o a deshidratación severa por vómitos (bulimia), el organismo pierde minerales esenciales como el potasio. Esto altera los impulsos eléctricos del corazón, causando arritmias, hipotensión severa, daño en los vasos sanguíneos y un debilitamiento general del músculo cardíaco que puede culminar en un infarto fulminante.</div>
     </div>
 
-    <div class="divider"></div>
-    <div class="section-label">Preguntas sobre la Metodología</div>
-
     <div class="qa-item">
-      <div class="qa-question" onclick="toggleQA(this)">¿Por qué dicen que su investigación es Descriptiva y de Campo? <span class="qa-arrow">▼</span></div>
-      <div class="qa-answer">Es Descriptiva (según Fernández, Hernández y Baptista, 2006) porque analizamos y presentamos la situación tal y como ocurre en la realidad. Es de Campo (según Arias, 2006) porque fuimos directamente al lugar de los hechos (la U.E.P. Gral. José Laurencio Silva) y recolectamos la información a través de entrevistas directamente de los adolescentes, sin manipular las variables en un laboratorio.</div>
+      <div class="qa-question" onclick="toggleQA(this)">¿Por qué dicen que su investigación es Descriptiva y de Campo? (Exclusivo para María) <span class="qa-arrow">▼</span></div>
+      <div class="qa-answer">Es Descriptiva (basados en Arias, 2006) porque analizamos, medimos y presentamos la realidad de la anorexia y la bulimia tal cual se manifiesta en los adolescentes. Es de Campo porque no manipulamos variables en un laboratorio; fuimos directamente a la U.E.P. Gral. José Laurencio Silva y recolectamos los datos (entrevistas) directamente de los 66 jóvenes afectados.</div>
     </div>
+    
     <div class="qa-item">
-      <div class="qa-question" onclick="toggleQA(this)">Si la población era de 184 alumnos, ¿por qué la muestra fue de 66? <span class="qa-arrow">▼</span></div>
-      <div class="qa-answer">Porque la muestra, como indica Balestrini, es un subconjunto específico de la población. De los 184 alumnos totales de la institución, filtramos y seleccionamos a 66 adolescentes (37 hembras y 29 varones) que cumplían con el perfil o presentaban vulnerabilidades relacionadas a los trastornos alimenticios para aplicarles el instrumento.</div>
+      <div class="qa-question" onclick="toggleQA(this)">Si la población era de 184 alumnos, ¿por qué la muestra fue de 66? (Ideal para María o Emanuel) <span class="qa-arrow">▼</span></div>
+      <div class="qa-answer">Porque la muestra, metodológicamente, es un subconjunto representativo. No todos los 184 alumnos presentaban interés o signos de vulnerabilidad. Seleccionamos intencionalmente a 66 adolescentes (37 mujeres y 29 hombres) entre 12 y 17 años que cumplían con los perfiles necesarios de vulnerabilidad ante la problemática para que la recolección de datos fuera precisa y útil.</div>
     </div>
 
-    <div class="divider"></div>
-    <div class="section-label">Preguntas sobre los Resultados</div>
-
     <div class="qa-item">
-      <div class="qa-question" onclick="toggleQA(this)">En las encuestas, la mayoría dijo no ser influenciado por redes sociales, pero sí conocen personas con el trastorno. ¿A qué se debe esa contradicción? <span class="qa-arrow">▼</span></div>
-      <div class="qa-answer">Esa contradicción revela una falta de conciencia del problema. Los adolescentes conviven con la enfermedad (saben que sus amigos la padecen) y sienten culpa al comer, pero no logran identificar que los estándares de belleza de las redes sociales están operando de manera subconsciente en ellos. Hay un efecto de negación.</div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-question" onclick="toggleQA(this)">Ustedes propusieron planes alimenticios. ¿Están capacitados para ello? <span class="qa-arrow">▼</span></div>
-      <div class="qa-answer">Nosotros elaboramos planes alimenticios de manera orientativa y general como intervención del proyecto, basados en recomendaciones nutricionales estándar para promover una alimentación saludable y evitar el ayuno. Sin embargo, en nuestras recomendaciones finales, enfatizamos categóricamente la necesidad de buscar "ayuda profesional médica y psicológica" para tratamientos clínicos personalizados.</div>
+      <div class="qa-question" onclick="toggleQA(this)">En las encuestas, la mayoría negó influencia de las redes, pero afirman sentir culpa al comer. ¿A qué se debe esa contradicción? (Ideal para Emanuel o Yohelvi) <span class="qa-arrow">▼</span></div>
+      <div class="qa-answer">Se debe a un profundo mecanismo de negación psicológica. Los adolescentes se resisten a admitir que son "manipulables" por una pantalla por una cuestión de ego, pero el síntoma real (el odio hacia su cuerpo o la culpa tras alimentarse) sí está presente y los destruye en silencio. Esto demuestra que la influencia de los estándares de belleza opera a nivel subconsciente.</div>
     </div>
   </div>
 
   <div id="datos" class="section">
-    <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1rem;">Estadísticas e historia que TODO el equipo debe memorizar.</p>
+    <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1rem;">Estadísticas e historia que TODO el equipo debe memorizar para defender su trabajo.</p>
 
     <div class="data-grid">
-      <div class="data-stat"><div class="val">184</div><div class="lbl">Población total (Estudiantes)</div></div>
+      <div class="data-stat"><div class="val">184</div><div class="lbl">Población total (Estudiantes U.E.P)</div></div>
       <div class="data-stat"><div class="val">66</div><div class="lbl">Muestra seleccionada (Adolescentes)</div></div>
       <div class="data-stat"><div class="val">12,48%</div><div class="lbl">Prevalencia de TCA en Venezuela (16 a 21 años)</div></div>
-      <div class="data-stat"><div class="val">20%</div><div class="lbl">De niños a nivel mundial sufren TCA</div></div>
-      <div class="data-stat"><div class="val">30 Min</div><div class="lbl">De TV bastan para dañar la imagen (Estudio 1992)</div></div>
+      <div class="data-stat"><div class="val">20%</div><div class="lbl">De niños a nivel mundial sufren el trastorno</div></div>
+      <div class="data-stat"><div class="val">30 Min</div><div class="lbl">De TV bastan para dañar la imagen (Myers, 1992)</div></div>
       <div class="data-stat"><div class="val">1874</div><div class="lbl">Dr. Gull acuña el término "Anorexia Nerviosa"</div></div>
     </div>
 
@@ -410,32 +482,15 @@
       <div class="card-title">Glosario de Emergencia <span class="badge badge-blue">Para el jurado</span></div>
       <div class="content">
         <ul>
-          <li><strong>Conductas Compensatorias:</strong> Vómitos o uso de laxantes para compensar un atracón.</li>
-          <li><strong>Lipofobia:</strong> Miedo exagerado, enfermizo e irracional a engordar.</li>
-          <li><strong>Trastorno Dismórfico Corporal:</strong> Enfermedad mental donde el paciente ve defectos gigantes en su físico que los demás no ven (distorsión de imagen).</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="consejos" class="section">
-    <div class="card">
-      <div class="card-title">Dinámica para 7 Expositores</div>
-      <div class="content">
-        <ul>
-          <li><strong>Ubicación:</strong> Puesto que son 7, párense en semicírculo para no taparse unos a otros. Den un paso al frente al hablar y retrocedan al terminar.</li>
-          <li><strong>Transiciones:</strong> Es obligatorio mencionar al siguiente compañero (como está en los guiones). Esto demuestra cohesión y ensayo.</li>
-          <li><strong>Uso de las manos:</strong> No escondan las manos en los bolsillos ni crucen los brazos, eso proyecta inseguridad o actitud a la defensiva. Usen las manos para enumerar los tipos (1 restrictivo, 2 purgativo).</li>
+          <li><strong>Conductas Compensatorias:</strong> Vómitos autoprovocados, uso de diuréticos o laxantes, y ejercicio extremo para "borrar" la culpa de un atracón.</li>
+          <li><strong>Lipofobia:</strong> Miedo exagerado, enfermizo e irracional a engordar (el núcleo de la anorexia).</li>
+          <li><strong>Disonancia Cognitiva:</strong> Cuando un alumno dice "estar conforme con su cuerpo" pero a la vez afirma "sentir culpa y asco al comer mucho". Sus pensamientos chocan entre sí.</li>
         </ul>
       </div>
     </div>
 
     <div class="warn-box">
-      <p><strong>Cuidado con los conceptos médicos:</strong> Si el jurado hace preguntas muy profundas sobre biología, utilicen las frases salvavidas: <em>"Según nuestra revisión documental guiada por..."</em>. Ustedes son investigadores sociales y estadísticos, no médicos graduados. Su objetivo fue evidenciar el factor influyente, no curar la enfermedad.</p>
-    </div>
-
-    <div class="tip-box">
-      <p><strong>Tip Emocional:</strong> El tema de la anorexia y la bulimia es trágico. Si alguno de ustedes sonríe o se ríe por nervios mientras explica sobre los vómitos, la depresión o el suicidio, el jurado bajará puntos drásticamente. Deben mantener un <strong>perfil solemne, profesional y de extrema preocupación</strong> por la salud de los adolescentes durante toda la defensa.</p>
+      <p><strong>Cuidado con los conceptos médicos:</strong> Si el jurado hace preguntas muy profundas sobre química sanguínea (que no están en la tesis), utilicen la frase salvavidas: <em>"Con permiso del jurado, nuestra investigación tiene un enfoque descriptivo y psicosocial guiado por [X Autor]. Si bien reconocemos la implicación médica, nuestro alcance fue diagnosticar la desinformación y proponer orientación, no sustituir un diagnóstico clínico médico."</em></p>
     </div>
   </div>
 
